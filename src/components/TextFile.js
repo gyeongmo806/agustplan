@@ -2,8 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 TextFile.defaultProps = {
-	mainUrl: "http://aplan92.hgodo.com/page/230223/013",
-	mainImageUrl: "/a013_09.jpg",
+	mainUrl: "http://aplan92.hgodo.com/page/230223/013/",
+	// mainImageUrl: "/a013_09.jpg",
 	manufactureCountry: "대한민국",
 	manufactureDate: "발송일 기준 6개월 이내",
 };

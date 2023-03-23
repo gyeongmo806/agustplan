@@ -1,25 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../styles/FileDrop.css";
-export default function MainImageRead() {
+import "../styles/DropZone.css";
+export default function ImageDragDrop(props) {
 	const dropZoneRef = useRef(null);
 	const draggedImageIndexRef = useRef(null);
 	const [images, setImages] = useState([]);
+
 	useEffect(() => {
-		console.log("useEffect Hook!");
+		console.log("ImageDragDrop : useEffect Hook!");
+		props.setMainImg(
+			images.map((image) => {
+				return image.name;
+			})
+		);
 	}, [images]);
 
 	function handleDragStart(event, index) {
+		console.log("ImageDragDrop : handleDragStart!");
 		draggedImageIndexRef.current = index;
 		event.dataTransfer.setData("text/plain", "");
 	}
+
 	function handleDragOver(event, index) {
 		// 드롭 대상 위에서 드래그 중일 때 실행되는 코드
+		console.log("ImageDragDrop : handleDragOver!");
+
 		event.preventDefault();
-		console.log("DragOver", index);
 	}
 	function handleDrop(event) {
 		// 드롭이 완료될 때 실행되는 코드
-		console.log("handleDrop");
+		console.log("ImageDragDrop : handleDrop!");
+
 		event.preventDefault();
 		for (let i = 0; i < event.dataTransfer.files.length; i++) {
 			const droppedFile = event.dataTransfer.files[i];
@@ -51,6 +61,8 @@ export default function MainImageRead() {
 		// }
 	}
 	function handleDragOverImage(event, index) {
+		console.log("ImageDragDrop : handleDragOverImage!");
+
 		event.preventDefault();
 		const draggedImageIndex = draggedImageIndexRef.current;
 		if (draggedImageIndex !== null && draggedImageIndex !== index) {
@@ -63,6 +75,8 @@ export default function MainImageRead() {
 		}
 	}
 	function handleDragEnd() {
+		console.log("ImageDragDrop : handleDragEnd!");
+
 		draggedImageIndexRef.current = null;
 	}
 	return (
@@ -90,12 +104,6 @@ export default function MainImageRead() {
 							handleDragOverImage(event, index)
 						}
 						onDragEnd={handleDragEnd}
-						// style={{
-						// 	display: image.loading ? "none" : "in-line",
-						// 	height: 120,
-						// 	margin: 100,
-						// 	backgroundColor: "black",
-						// }}
 					/>
 				))}
 			</div>

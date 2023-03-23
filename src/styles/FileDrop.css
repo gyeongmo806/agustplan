@@ -1,0 +1,18 @@
+.drop-zone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border: 2px dashed gray;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-zone img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 5px gray;
+}

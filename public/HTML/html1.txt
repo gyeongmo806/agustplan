@@ -94,7 +94,7 @@ ${colorExplain}
 패브릭
 
 ------------------------------------------------------------------------------>
-<img src="${mainUrl}${fabricImage}" alt="test_03.jpg" />
+<img src="${mainUrl}${fabricImageUrl}" alt="test_03.jpg" />
 	
 	
 <div style="color: rgb(0, 0, 0); font-family: '돋움', dotum; font-size:8.5pt">
@@ -102,7 +102,8 @@ ${colorExplain}
 <div style="font-size:8.5pt; margin-bottom: 5px; color: rgb(0,0,0);">
 
 
-${fabricExplain}
+${fabricInfo}의 혼용률로<br/>
+${fabricExplain}<br/>
 
 
 
@@ -160,7 +161,7 @@ ${fabricExplain}
 <!--연정모델-->
 <div style="margin-bottom:5px;">
 <img src='http://aplan92.hgodo.com/etc/page_16.jpg' /><br>
-${fittingInfo}
+*${fittingColor},${fittingSize}사이즈 착용<br/>
 
 
 
@@ -356,13 +357,14 @@ align: top;">눈으로 만져보세요: )</p>
 
 <div>
   <p style="color: rgb(99, 99, 99); line-height: 15px; font-family: &quot;돋움&quot;; font-size: 12px; vertical-align: top;">
-  <b>컬러(Color)</b> : 블루,블랙
+  <b>컬러(Color)</b> : ${colors}
   <br>
-  <b>소재(Fabric</b>) : 면 100%
+  <b>소재(Fabric</b>) : ${fabricInfo}
   <br>
   <b>사이즈(Size)</b> : 1(44-99),2(100-110)
   <br>
-  <b>모델피팅(Model fitting)</b> : 연정/블루/1사이즈</p>
+  <b>모델피팅(Model fitting)</b> : 연정/${fittngColor}/${fittingSize}사이즈</p>
+
 
 </div>
 </div>

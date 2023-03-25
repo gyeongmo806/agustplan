@@ -7,7 +7,7 @@ export default function ImageDragDrop(props) {
 
 	useEffect(() => {
 		console.log("ImageDragDrop : useEffect Hook!");
-		props.setMainImg(
+		props.setImg(
 			images.map((image) => {
 				return image.name;
 			})
@@ -79,6 +79,11 @@ export default function ImageDragDrop(props) {
 
 		draggedImageIndexRef.current = null;
 	}
+	function handleDeleteImage(index) {
+		const newImages = [...images];
+		newImages.splice(index, 1);
+		setImages(newImages);
+	}
 	return (
 		<div>
 			<div
@@ -87,29 +92,33 @@ export default function ImageDragDrop(props) {
 				onDragOver={handleDragOver}
 				onDrop={handleDrop}
 			>
-				{images[0] ? <p></p> : <p>메인이미지를 드래그해주세요.</p>}
+				{images[0] ? <p></p> : <p>이미지를 드래그해주세요.</p>}
 				{images.map((image, index) => (
-					<img
-						draggable
-						key={index}
-						src={image.url}
-						alt={image.name}
-						onLoad={() => {
-							const newImages = [...images];
-							newImages[index].loading = false;
-							setImages(newImages);
-						}}
-						onDragStart={(event) => handleDragStart(event, index)}
-						onDragOver={(event) =>
-							handleDragOverImage(event, index)
-						}
-						onDragEnd={handleDragEnd}
-					/>
-				))}
-			</div>
-			<div>
-				{images.map((image, index) => (
-					<li key={index}>{image.name}</li>
+					<div className="image-container" key="index">
+						<img
+							draggable
+							key={index}
+							src={image.url}
+							alt={image.name}
+							onLoad={() => {
+								const newImages = [...images];
+								newImages[index].loading = false;
+								setImages(newImages);
+							}}
+							onDragStart={(event) =>
+								handleDragStart(event, index)
+							}
+							onDragOver={(event) =>
+								handleDragOverImage(event, index)
+							}
+							onDragEnd={handleDragEnd}
+						/>
+						<div className="button-container">
+							<button onClick={() => handleDeleteImage(index)}>
+								삭제
+							</button>
+						</div>
+					</div>
 				))}
 			</div>
 		</div>

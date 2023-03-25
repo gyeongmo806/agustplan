@@ -17,7 +17,16 @@ function TextFile(props) {
 		const replacedHtmlContent = htmlContent.replace(
 			/\$\{(\w+)\}/g,
 			(_, key) => {
-				return data.props[key];
+				// return data.props[key];
+				const keys = key.split("."); // key 값을 .을 기준으로 나눕니다.
+				let value = data.props[keys[0]]; // 첫 번째 key 값을 사용하여 값을 가져옵니다.
+				console.log(value);
+				// key 값을 .으로 연결된 여러 개의 속성을 순회하면서 값을 가져옵니다.
+				for (let i = 1; i < keys.length; i++) {
+					value = value[keys[i]];
+				}
+				console.log(value);
+				return value;
 			}
 		);
 		const file = new Blob([replacedHtmlContent], {

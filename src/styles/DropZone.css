@@ -16,3 +16,28 @@
     border-radius: 5px;
     box-shadow: 0 0 5px gray;
 }
+
+.image-container {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 30px;
+}
+
+.button-container button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}

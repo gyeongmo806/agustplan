@@ -37,7 +37,7 @@ export default function ColorView(props) {
 				: [];
 			const result = expArray.join("\n");
 			console.log(expArray, result);
-			// props.setColorExp({ html: result, colors: colors });
+			props.setColorExp({ html: result, colors: colors });
 		}
 	}, [colors, colorContexts]);
 

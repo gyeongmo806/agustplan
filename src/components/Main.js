@@ -5,7 +5,7 @@ import DetailExplain from "./DetailExplain";
 import ColorView from "./ColorView";
 import FabricView from "./FabricView";
 import FittingInfo from "./FittingInfo";
-// import ItemSize from "./ItemSize";
+import ItemSize from "./ItemSize";
 
 function Main() {
 	const [mainImg, setMainImg] = useState("");
@@ -19,7 +19,7 @@ function Main() {
 	const [fabricExp, setFabricExp] = useState("");
 	const [fabric, setFabric] = useState({ info: "", explain: "" });
 	const [fitting, setFitting] = useState({ color: "", size: "" });
-	const [sizes, setSizes] = useState([{ size: "", detailSize: {} }]);
+	const [sizes, setSizes] = useState();
 	return (
 		<div>
 			<h1>드래그 앤 드롭 (메인이미지)</h1>
@@ -35,13 +35,18 @@ function Main() {
 			<h1>패브릭설명 입력</h1>
 			<FabricView setFabric={setFabric} />
 			<h1>사이즈 정보 입력</h1>
-			{/* <ItemSize /> */}
+			<ItemSize setSize={setSizes} />
 			<h1>피팅인포 입력</h1>
-			<FittingInfo
-				setFitting={setFitting}
-				colors={colorExplain.colors}
-				sizes={sizes}
-			/>
+			{sizes ? (
+				<FittingInfo
+					setFitting={setFitting}
+					colors={colorExplain.colors}
+					sizes={sizes}
+				/>
+			) : (
+				""
+			)}
+
 			<h1>드래그 앤 드롭 (본문이미지)</h1>
 			<TextFile
 				mainImageUrl={mainImg}

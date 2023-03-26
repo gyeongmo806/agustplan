@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
@@ -17,8 +17,15 @@ export default function FittingInfo(props) {
 	const [selectedSize, setSelectedSize] = useState("");
 	const [value, setValue] = useState("");
 	const colors = props.colors;
-	const sizes = props.sizes;
+	const sizes = props.sizes.map((item) => item.size);
 
+	console.log(sizes, props.colors);
+	useEffect(() => {
+		if (sizes !== "undefined") {
+			// sizes = sizes.
+		}
+		props.setFitting({ color: selectedColor, size: selectedSize });
+	}, [selectedColor, selectedSize]);
 	function handleColorChange(e) {
 		setSelectedColor(e.target.value);
 	}

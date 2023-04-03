@@ -52,9 +52,13 @@ export default function ColorView(props) {
 
 	function handleColorInput(e) {
 		const inputValue = e.target.value;
+		console.log(inputValue);
+		inputValue.replace("\n", "");
 		const sentence = inputValue.split(/[,;]/);
-		console.log(colors.length, sentence, colors);
-		setColors(sentence);
+		const newSentence = sentence.map((value) => value.replace("\n\n", ""));
+
+		console.log(colors.length, newSentence, colors);
+		setColors(newSentence);
 	}
 
 	return (

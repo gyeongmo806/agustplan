@@ -20,6 +20,7 @@ function Main() {
 	const [fabric, setFabric] = useState({ info: "", explain: "" });
 	const [fitting, setFitting] = useState({ color: "", size: "" });
 	const [sizes, setSizes] = useState();
+	const [sizeHtml, setSizeHtml] = useState();
 	return (
 		<div>
 			<h1>드래그 앤 드롭 (메인이미지)</h1>
@@ -35,7 +36,7 @@ function Main() {
 			<h1>패브릭설명 입력</h1>
 			<FabricView setFabric={setFabric} />
 			<h1>사이즈 정보 입력</h1>
-			<ItemSize setSize={setSizes} />
+			<ItemSize setSize={setSizes} setSizeHtml={setSizeHtml} />
 			<h1>피팅인포 입력</h1>
 			{sizes ? (
 				<FittingInfo
@@ -59,6 +60,7 @@ function Main() {
 				fittingColor={fitting.color}
 				fittingSize={fitting.size}
 				colors={colorExplain.colors}
+				sizeHtml={sizeHtml}
 			/>
 		</div>
 	);

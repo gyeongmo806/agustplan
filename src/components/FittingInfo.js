@@ -13,17 +13,15 @@ const StyledOption = styled.option`
 	font-size: 16px;
 `;
 export default function FittingInfo(props) {
-	const [selectedColor, setSelectedColor] = useState("");
-	const [selectedSize, setSelectedSize] = useState("");
-	const [value, setValue] = useState("");
 	const colors = props.colors;
 	const sizes = props.sizes.map((item) => item.size);
+	const [selectedColor, setSelectedColor] = useState(colors[0]);
+	const [selectedSize, setSelectedSize] = useState(sizes[0]);
+	const [value, setValue] = useState("");
 
 	console.log(sizes, props.colors);
 	useEffect(() => {
-		if (sizes !== "undefined") {
-			// sizes = sizes.
-		}
+		console.log(selectedColor, selectedSize);
 		props.setFitting({ color: selectedColor, size: selectedSize });
 	}, [selectedColor, selectedSize]);
 	function handleColorChange(e) {

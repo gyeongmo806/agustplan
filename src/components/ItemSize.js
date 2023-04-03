@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import parseCSV from "./utils";
+import ReactDOMServer from "react-dom/server";
 
 function ItemSize(props) {
 	const [data, setData] = useState({ columns: [], rows: [] });
@@ -9,19 +10,20 @@ function ItemSize(props) {
 
 	useEffect(() => {
 		console.log(data);
-		const html = data.columns.map((column, columnIndex) => (
-			<tr key={columnIndex}>
-				{data.rows.map((row, rowIndex) => (
-					<td key={rowIndex}>
-						{data.columns.map((column, columnIndex) => (
-							<td key={columnIndex}>{row[column] || "-"}</td>
-						))}
-					</td>
-				))}
-			</tr>
+		const html = data.rows.map((row, rowIndex) => (
+			<div>
+				<tr key={rowIndex}>
+					{data.columns.map((column, columnIndex) => (
+						<td key={columnIndex}>{row[column]}</td>
+					))}
+				</tr>
+			</div>
 		));
-		console.log(html);
+
+		const jsxString = ReactDOMServer.renderToString(html);
+		console.log(jsxString);
 		props.setSize(sizeInfo);
+		props.setSizeHtml(jsxString);
 	}, [data]);
 	const handlePaste = (event) => {
 		const clipboardData = event.clipboardData || window.clipboardData;
